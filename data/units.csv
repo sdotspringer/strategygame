@@ -1,0 +1,4 @@
+type,attack,health,movement,ground,fly,swim
+WARRIOR,5,10,5,true,false,false
+ARCHER,3,6,5,true,false,false
+MAGE,5,4,6,true,false,false
