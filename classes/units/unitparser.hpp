@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------------------------------------
 //
-/// Declarations for the Archer class which inherits from Unit.
+/// Declarations for the UnitParser class.
 //
-#ifndef ARCHER_HPP
-#define ARCHER_HPP
+#ifndef UNITPARSER_HPP
+#define UNITPARSER_HPP
 
 #endif
