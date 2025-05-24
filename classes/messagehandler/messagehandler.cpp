@@ -39,6 +39,16 @@ void MessageHandler::initializeMessages(std::string file)
     std::getline(line_to_parse, message_key, ':');
     std::getline(line_to_parse, message_text, ':');
 
+    // Add message prefix
+    if(message_key[0] == 'I')
+    {
+      message_text.insert(0, "[INFO] ");
+    }
+    else if(message_key[0] == 'E')
+    {
+      message_text.insert(0, "[ERROR] ");
+    }
+
     messages_.insert({message_key, message_text});
   }
 }

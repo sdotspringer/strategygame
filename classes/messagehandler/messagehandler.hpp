@@ -14,16 +14,18 @@
 ///
 /// @param messages_ The map that contains the message identifier key and the corresponding message text.
 ///
+/// @attention This is a singleton, copy constructor and assignment operator are deleted
 //
 class MessageHandler
 {
   private:
     std::unordered_map<std::string, std::string> messages_;
-    MessageHandler() {}
+
+    MessageHandler() = default;
 
   public:
-    MessageHandler(MessageHandler& copy) = delete;
-    MessageHandler& operator=(MessageHandler& copy) = delete;
+    MessageHandler(MessageHandler& original) = delete;
+    MessageHandler& operator=(MessageHandler& original) = delete;
     ~MessageHandler() = default;
 
     //-----------------------------------------------------------------------------------------------------------------
