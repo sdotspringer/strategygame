@@ -1,1 +1,3 @@
-Messages
+MESSAGES
+E_CANNOT_OPEN_FILE:A config file could not be opened.
+E_WRONG_FILE:Entered file did not match the config file requirements.

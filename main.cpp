@@ -1,5 +1,6 @@
 #include "classes/game/game.hpp"
 #include "classes/units/unit.hpp"
+#include "classes/messagehandler/messagehandler.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -14,11 +15,13 @@ enum ExitCodes
 
 int main(int argc, char* argv[])
 {
-if(argc != 2)
+if(argc != 3)
 {
   std::cout << "[ERROR] Wrong number of game arguments." << std::endl;
   return INVALID_ARGUMENT_COUNT;
 }
+
+MessageHandler::getInstance().initializeMessages(argv[2]);
 
 Game game;
 game.loadGameMap(argv[1]);
