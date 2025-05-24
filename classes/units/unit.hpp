@@ -63,6 +63,7 @@ class Unit
     Unit(UnitType type, uint health_base, uint attack_base, uint movement, MovementType movement_type);
     Unit(Unit& original) = delete;
     Unit operator=(Unit& original) = delete;
+    virtual ~Unit() = default;
 
     virtual void attack() = 0;
 
