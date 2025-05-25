@@ -1,3 +1,5 @@
 MESSAGES
 E_CANNOT_OPEN_FILE:A config file could not be opened.
-E_WRONG_FILE:Entered file did not match the config file requirements.
+E_WRONG_FILE:Entered file did not have the required magic word.
+D_TOP_BORDER:======================================[MAP]======================================
+D_BOTTOM_BORDER: =================================================================================

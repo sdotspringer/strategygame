@@ -1,6 +1,6 @@
 CXX           := clang++
 CXXFLAGS      := -Wall -Wextra -pedantic -gdwarf-4 -std=c++20 -g -fstandalone-debug
-EXECNAME      := game
+EXECNAME      := strategygame
 SOURCES       := $(shell find . -name "*.cpp")
 
 

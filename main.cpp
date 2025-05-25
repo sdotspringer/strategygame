@@ -1,6 +1,7 @@
 #include "classes/game/game.hpp"
 #include "classes/units/unit.hpp"
 #include "classes/messagehandler/messagehandler.hpp"
+#include "classes/exception/gameexception.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -25,7 +26,7 @@ MessageHandler::getInstance().initializeMessages(argv[2]);
 
 Game game;
 game.loadGameMap(argv[1]);
-game.printXAndY();
+
 game.printMap();
 
 return SUCCESFUL_TERMINATION;
