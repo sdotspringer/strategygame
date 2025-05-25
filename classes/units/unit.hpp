@@ -50,22 +50,29 @@ class Unit
 {
   protected:
     UnitType type_;
-    const uint health_base_;
-    uint health_current_;
-    const uint attack_base_;
-    uint attack_current_;
-    uint movement_;
+    const unsigned int health_base_;
+    unsigned int health_current_;
+    const unsigned int attack_base_;
+    unsigned int attack_current_;
+    unsigned int movement_;
     MovementType movement_type_;
     bool can_move_;
+    unsigned int x_location_;
+    unsigned int y_location_;
+    unsigned int cost_;
 
   public:
     Unit() = delete;
-    Unit(UnitType type, uint health_base, uint attack_base, uint movement, MovementType movement_type);
+    Unit(UnitType type, unsigned int health_base, unsigned int attack_base, unsigned int movement,
+         MovementType movement_type, unsigned int x_location, unsigned int y_location);
     Unit(Unit& original) = delete;
-    Unit operator=(Unit& original) = delete;
+    Unit& operator=(Unit& original) = delete;
     virtual ~Unit() = default;
 
+    Unit& operator<(Unit& compare_to);
+
     virtual void attack() = 0;
+    virtual void move() = 0;
 
 };
 

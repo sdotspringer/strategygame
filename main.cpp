@@ -24,7 +24,9 @@ if(argc != 3)
 
 MessageHandler::getInstance().initializeMessages(argv[2]);
 
-Game game;
+Player one;
+Player two;
+Game game(one, two);
 game.loadGameMap(argv[1]);
 
 game.printMap();

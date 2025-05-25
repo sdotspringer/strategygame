@@ -7,6 +7,7 @@
 
 #include "../units/unit.hpp"
 #include "../exception/gameexception.hpp"
+#include "../player/player.hpp"
 #include <iostream>
 #include <memory>
 
@@ -31,35 +32,39 @@ const std::string color_reset = "\033[0m";
 class Game
 {
   private:
-    uint x_size_;
-    uint y_size_;
+    Player& player_one_;
+    Player& player_two_;
+    unsigned int x_size_;
+    unsigned int y_size_;
     std::vector<std::vector<char>> map_;
     std::vector<std::vector<std::unique_ptr<Unit>>> unit_map_;
-    uint round_number_;
+    unsigned int round_number_;
 
-    std::string printLogic(uint x, uint y);
+    std::string printLogic(unsigned int x, unsigned int y);
   public:
-    Game() = default;
-    Game(Game& original) = delete;
-    Game& operator=(Game& original) = delete;
-    ~Game() = default;
 
-    //-----------------------------------------------------------------------------------------------------------------
-    //
-    /// Initializes the map, based on the size and tiles in the config file. Also initializes all the unit fields to
-    /// nullptr
-    ///
-    /// @param file The file that contains the map
-    //
-    void loadGameMap(std::string file);
-
-    //-----------------------------------------------------------------------------------------------------------------
-    //
-    /// Prints the map. Backgroundcolor of the field depends on the ground-type. If a unit is present the char
-    /// representation of that unit is printed, otherwise the character representation of the ground-type.
-    ///
-    //    
-    void printMap();
+  Game() = delete;
+  Game(Player& player_one, Player& player_two);
+  Game(Game& original) = delete;
+  Game& operator=(Game& original) = delete;
+  ~Game() = default;
+  
+  //-----------------------------------------------------------------------------------------------------------------
+  //
+  /// Initializes the map, based on the size and tiles in the config file. Also initializes all the unit fields to
+  /// nullptr
+  ///
+  /// @param file The file that contains the map
+  //
+  void loadGameMap(std::string file);
+  
+  //-----------------------------------------------------------------------------------------------------------------
+  //
+  /// Prints the map. Backgroundcolor of the field depends on the ground-type. If a unit is present the char
+  /// representation of that unit is printed, otherwise the character representation of the ground-type.
+  ///
+  //    
+  void printMap();
 };
 
 

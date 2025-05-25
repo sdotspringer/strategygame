@@ -14,6 +14,8 @@
 #include "../exception/gameexception.hpp"
 #include "../messagehandler/messagehandler.hpp"
 
+Game::Game(Player& player_one, Player& player_two) : player_one_(player_one), player_two_(player_two) {}
+
 void Game::loadGameMap(std::string file)
 {
   // Check if file could be opened
@@ -56,9 +58,11 @@ void Game::loadGameMap(std::string file)
   {
     row.resize(x_size_);
   }
+
+  round_number_ = 1;
 }
 
-std::string Game::printLogic(uint x, uint y)
+std::string Game::printLogic(unsigned int x, unsigned int y)
 {
   std::string output;
   char field = map_[y][x];
