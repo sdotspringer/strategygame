@@ -20,12 +20,12 @@ class MessageHandler
 {
   private:
     std::unordered_map<std::string, std::string> messages_;
-
+    
     MessageHandler() = default;
-
-  public:
-    MessageHandler(MessageHandler& original) = delete;
-    MessageHandler& operator=(MessageHandler& original) = delete;
+    
+    public:
+    MessageHandler(const MessageHandler& original) = delete;
+    MessageHandler& operator=(const MessageHandler& original) = delete;
     ~MessageHandler() = default;
 
     //-----------------------------------------------------------------------------------------------------------------

@@ -15,9 +15,9 @@ class Building
     unsigned int health_current_;
     const unsigned int x_location_;
     const unsigned int y_location_;
-    std::weak_ptr<Player> owned_by_;
   public:
-    Building() = default;
+    Building() = delete;
+    Building(const unsigned int health_max, const unsigned int x_location, const unsigned int y_location);
     Building(Building& original) = delete;
     Building& operator=(Building& original) = delete;
     ~Building() = default;

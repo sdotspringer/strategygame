@@ -26,7 +26,7 @@ MessageHandler::getInstance().initializeMessages(argv[2]);
 
 Player one;
 Player two;
-Game game(one, two);
+Game game{};
 game.loadGameMap(argv[1]);
 
 game.printMap();

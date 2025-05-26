@@ -14,7 +14,17 @@
 #include "../exception/gameexception.hpp"
 #include "../messagehandler/messagehandler.hpp"
 
-Game::Game(Player& player_one, Player& player_two) : player_one_(player_one), player_two_(player_two) {}
+Game::Game()
+{
+  player_one_ = new Player();
+  player_two_ = new Player();
+}
+
+Game::~Game()
+{
+  delete player_one_;
+  delete player_two_;
+}
 
 void Game::loadGameMap(std::string file)
 {
@@ -59,7 +69,6 @@ void Game::loadGameMap(std::string file)
     row.resize(x_size_);
   }
 
-  round_number_ = 1;
 }
 
 std::string Game::printLogic(unsigned int x, unsigned int y)
@@ -118,4 +127,9 @@ void Game::printMap()
     std::cout << std::endl;
   }
   std::cout << MessageHandler::getInstance().getMessage("D_BOTTOM_BORDER") << std::endl << std::endl;
+}
+
+unsigned int Game::getRoundNumber() const
+{
+  return round_number_;
 }
