@@ -12,7 +12,11 @@ class Headquarters : public Building
   private:
 
   public:
-  
+  Headquarters() = delete;
+  Headquarters(const unsigned x_location, const unsigned y_location);
+  Headquarters(Headquarters& original) = delete;
+  Headquarters& operator=(Headquarters& original) = delete;
+  ~Headquarters() = default;
 };
 
 #endif

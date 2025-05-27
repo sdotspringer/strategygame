@@ -8,6 +8,7 @@
 #include "../units/unit.hpp"
 #include "../exception/gameexception.hpp"
 #include "../player/player.hpp"
+#include "../buildings/headquarters.hpp"
 #include <iostream>
 #include <memory>
 
@@ -36,8 +37,9 @@ class Game
     Player* player_two_;
     unsigned int x_size_ = 0;
     unsigned int y_size_ = 0;
-    std::vector<std::vector<char>> map_ = {};
-    std::vector<std::vector<std::unique_ptr<Unit>>> unit_map_ = {};
+    std::vector<std::vector<char>> map_;
+    std::vector<std::vector<std::unique_ptr<Unit>>> unit_map_;
+    std::vector<std::vector<Building>> building_map_;
     unsigned int round_number_ = 0;
 
     std::string printLogic(unsigned int x, unsigned int y);

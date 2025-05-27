@@ -58,6 +58,7 @@ void Game::loadGameMap(std::string file)
     std::stringstream line_to_delimit(line);
     while(std::getline(line_to_delimit, token, ' '))
     {
+      if(token.at(0) >= 'A' && token.at(0) <= 'Z')
       map_[counter].push_back(token.at(0));
     }
   }
