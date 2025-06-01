@@ -26,6 +26,19 @@ Game::~Game()
   delete player_two_;
 }
 
+std::unique_ptr<Building> Game::initializeBuilding(char type, unsigned int x, unsigned int y)
+{
+  switch(type)
+  {
+    case('H'):
+      return std::make_unique<Headquarters>(x, y);
+    default:
+      return nullptr;
+  }
+  return nullptr;
+}
+
+
 void Game::loadGameMap(std::string file)
 {
   // Check if file could be opened
@@ -51,15 +64,26 @@ void Game::loadGameMap(std::string file)
   
   // Read map tiles from file and initialize map
   map_.resize(y_size_);
+  unit_map_.resize(y_size_);
+  building_map_.resize(y_size_);
   std::string token;
-  for(size_t counter = 0; counter < y_size_; counter++)
+  for(size_t y = 0; y < y_size_; y++)
   {
+    map_.at(y).resize(x_size_);
+    unit_map_.at(y).resize(x_size_);
+    building_map_.at(y).resize(x_size_);
+
     std::getline(map_config, line);
     std::stringstream line_to_delimit(line);
-    while(std::getline(line_to_delimit, token, ' '))
+    for(size_t x = 0; x < x_size_; x++)
     {
-      if(token.at(0) >= 'A' && token.at(0) <= 'Z')
-      map_[counter].push_back(token.at(0));
+      (std::getline(line_to_delimit, token, ' '));
+      char tile = token.at(0);
+      if(valid_buildings.contains(tile))
+      {
+        building_map_[y][x] = initializeBuilding(tile, x, y);
+      }
+      map_[y][x] = tile;
     }
   }
 
@@ -71,6 +95,21 @@ void Game::loadGameMap(std::string file)
   }
 
 }
+
+void Game::debugPrintBuildings()
+{
+  for(uint y = 0; y < y_size_; y++)
+  {
+    for(uint x = 0; x < x_size_; x++)
+    {
+      if(building_map_[y][x] != nullptr)
+      {
+        building_map_[y][x]->debugPrintBuilding();
+      }
+    }
+  }
+}
+
 
 std::string Game::printLogic(unsigned int x, unsigned int y)
 {

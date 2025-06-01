@@ -17,6 +17,7 @@ class Headquarters : public Building
   Headquarters(Headquarters& original) = delete;
   Headquarters& operator=(Headquarters& original) = delete;
   ~Headquarters() = default;
+
 };
 
 #endif

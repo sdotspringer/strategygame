@@ -30,6 +30,7 @@ Game game{};
 game.loadGameMap(argv[1]);
 
 game.printMap();
+game.debugPrintBuildings();
 
 return SUCCESFUL_TERMINATION;
 }

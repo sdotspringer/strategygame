@@ -11,12 +11,16 @@
 #include "../buildings/headquarters.hpp"
 #include <iostream>
 #include <memory>
+#include <map>
+#include <set>
 
 // Color constants for terminal output
 const std::string color_green = "\033[42m";
 const std::string color_yellow = "\033[43m";
 const std::string color_blue = "\033[44m";
 const std::string color_reset = "\033[0m";
+
+const std::set<char> valid_buildings = {'H'};
 
 //---------------------------------------------------------------------------------------------------------------------
 //
@@ -39,17 +43,19 @@ class Game
     unsigned int y_size_ = 0;
     std::vector<std::vector<char>> map_;
     std::vector<std::vector<std::unique_ptr<Unit>>> unit_map_;
-    std::vector<std::vector<Building>> building_map_;
+    std::vector<std::vector<std::unique_ptr<Building>>> building_map_;
     unsigned int round_number_ = 0;
 
     std::string printLogic(unsigned int x, unsigned int y);
-  public:
-
+    std::unique_ptr<Building> initializeBuilding(char type, unsigned int x, unsigned int y);
+    
+    public:
+    
     Game();
     Game(Game& original) = delete;
     Game& operator=(Game& original) = delete;
     ~Game();
-  
+    
     //-----------------------------------------------------------------------------------------------------------------
     //
     /// Initializes the map, based on the size and tiles in the config file. Also initializes all the unit fields to
@@ -58,7 +64,7 @@ class Game
     /// @param file The file that contains the map
     //
     void loadGameMap(std::string file);
-  
+    
     //-----------------------------------------------------------------------------------------------------------------
     //
     /// Prints the map. Backgroundcolor of the field depends on the ground-type. If a unit is present the char
@@ -66,7 +72,8 @@ class Game
     ///
     //    
     void printMap();
-
+    
+    void debugPrintBuildings();
     //-----------------------------------------------------------------------------------------------------------------
     //
     /// Receives the current round number from the `Game` instance.
